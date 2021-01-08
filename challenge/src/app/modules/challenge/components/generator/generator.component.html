@@ -4,7 +4,7 @@
 
 <div class="d-flex flex-wrap mb-3">
   <div class="mr-auto mt-2">
-    <div *ngIf="form" [formGroup]="form">
+    <div [formGroup]="challengefacade.generatorService.form">
       <input type="text" class="form-control" maxlength="1" onkeypress="return /[a-z]{1}/i.test(event.key)"
         formControlName="search" placeholder="{{'Insert a letter'}}">
     </div>

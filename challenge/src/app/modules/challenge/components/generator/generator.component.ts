@@ -10,22 +10,9 @@ import { ChallengeFacadeService } from '../../services/challhenge.service';
 export class GeneratorComponent implements OnInit {
 
 
-  form;
 
+  constructor (public challengefacade: ChallengeFacadeService) {
 
-  constructor (private challengefacade: ChallengeFacadeService) {
-    this.form = new FormGroup({
-      search: new FormControl(this.challengefacade.generatorService.search)
-    });
-
-    this.form.controls.search.valueChanges.subscribe(w => {
-      if (this.challengefacade.generatorService.search !== w) {
-        this.challengefacade.generatorService.search = w;
-        if (this.challengefacade.generatorService.started && w) {
-          this.challengefacade.generatorService.generateCells();
-        }
-      }
-    })
   }
 
 
@@ -50,11 +37,11 @@ export class GeneratorComponent implements OnInit {
     this.challengefacade.generatorService.started = true;
     this.challengefacade.generatorService.start();
     setInterval(() => {
-      if (this.form.disabled) {
-        this.form.enable();
+      if (this.challengefacade.generatorService.form.disabled) {
+        this.challengefacade.generatorService.form.enable();
       } else {
-        if (this.challengefacade.generatorService.search) {
-          this.form.disable();
+        if (this.challengefacade.generatorService.form.controls.search) {
+          this.challengefacade.generatorService.form.disable();
         }
       }
     }, 4000);

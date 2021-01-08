@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 const NUMROWS = 10;
 
@@ -9,7 +10,9 @@ export class GeneratorService {
   cells = [];
   lastTime: Date = new Date();
   result = null;
-  search = null;
+  form = new FormGroup({
+    search: new FormControl(null)
+  });
   started;
   constructor () {
 
@@ -50,7 +53,8 @@ export class GeneratorService {
     this.lastTime = new Date(this.time);
     const seconds = this.lastTime.getSeconds().toString();
 
-    if (this.search) {
+    const search = this.form.controls.search.value;
+    if (search) {
       count20 = 1;
     }
 
@@ -59,7 +63,7 @@ export class GeneratorService {
       let irow = 0;
       let row: string[] = [];
       for (irow; irow < NUMROWS; irow++) {
-        row.push(count20 && count20 <= Math.round((NUMROWS * NUMROWS) * 0.20) ? this.search.toUpperCase() : this.randowCell());
+        row.push(count20 && count20 <= Math.round((NUMROWS * NUMROWS) * 0.20) ? search.toUpperCase() : this.randowCell());
         if (count20)
           count20++;
       }
