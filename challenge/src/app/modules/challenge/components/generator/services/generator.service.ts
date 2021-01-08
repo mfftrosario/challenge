@@ -102,8 +102,6 @@ export class GeneratorService {
         this.result[ir] = auxresult[ir]
       }
     }
-
-    this.result = auxresult;
   }
 
   makeOdd(n) {
