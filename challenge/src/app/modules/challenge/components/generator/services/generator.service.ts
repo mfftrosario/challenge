@@ -7,6 +7,7 @@ const NUMROWS = 10;
 export class GeneratorService {
   time: Date = new Date;
   cells = [];
+  lastTime: Date = new Date();
   result = null;
   search = null;
   started;
@@ -46,6 +47,9 @@ export class GeneratorService {
 
   generateCells() {
     let count20;
+    this.lastTime = new Date(this.time);
+    const seconds = this.lastTime.getSeconds().toString();
+
     if (this.search) {
       count20 = 1;
     }
@@ -77,13 +81,12 @@ export class GeneratorService {
 
     this.cells = shuffled10DimArr;
 
-    const seconds = this.time.getSeconds().toString();
 
     let ix = seconds[1] ? parseInt(seconds[0]) : 0;
     let iy = seconds[1] ? parseInt(seconds[1]) : parseInt(seconds[0]);
 
 
-    const letters = [this.cells[ix][iy], this.cells[iy][ix]];
+    const letters = [this.cells[iy][ix], this.cells[ix][iy]];
     this.result = [0, 0];
 
     let auxresult = [0, 0]

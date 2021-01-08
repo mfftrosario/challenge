@@ -39,7 +39,7 @@ export class PaymentsComponent implements OnInit {
       let obj = this.form.getRawValue();
       obj.code = this.result ? this.result[0] + '' + this.result[1] : '00';
       obj.grid = this.challengefacade.generatorService.cells;
-      obj.time = this.challengefacade.generatorService.time;
+      obj.time = this.challengefacade.generatorService.lastTime;
       this.challengefacade.paymentsService.addItemToList(obj);
     }
   }
