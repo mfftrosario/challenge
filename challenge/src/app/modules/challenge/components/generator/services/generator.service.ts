@@ -82,8 +82,8 @@ export class GeneratorService {
 
     const seconds = this.time.getSeconds().toString();
 
-    let i0 = seconds[1] ? seconds[0] : 0
-    let i1 = seconds[1] ? seconds[1] : seconds[0]
+    let i0 = seconds[1] ? seconds[0] : 0;
+    let i1 = seconds[1] ? seconds[1] : seconds[0];
 
 
     const letters = [this.cells[i1][i0], this.cells[i0][i1]];

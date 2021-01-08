@@ -11,8 +11,8 @@
   <div class="d-flex flex-wrap">
     <div class="mr-2 mt-2">
       <input type="text" class="form-control"
-        [class.is-invalid]="form.controls.name.errors && (form.controls.name.touched )"
-        onkeypress="return /[a-z]/i.test(event.key)" formControlName="name" placeholder="{{'Insert a payment name'}}">
+        [class.is-invalid]="form.controls.name.errors && (form.controls.name.touched )" formControlName="name"
+        placeholder="{{'Insert a payment name'}}">
       <small class="text-danger"
         *ngIf="form.controls.name.errors?.required && form.controls.name.invalid && (form.controls.name.touched )">
         Name is Required
