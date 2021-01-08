@@ -1,0 +1,29 @@
+<h1>
+  Generator
+</h1>
+
+<div class="d-flex flex-wrap mb-3">
+  <div class="mr-auto mt-2">
+    <div [formGroup]="form">
+      <input type="text" class="form-control" maxlength="1" onkeypress="return /[a-z]{1}/i.test(event.key)"
+        formControlName="search" placeholder="{{'Insert a letter'}}">
+    </div>
+  </div>
+
+  <div class="ml-auto mr-auto mt-2">
+    <h5>{{time| date:'mediumTime'}}</h5>
+  </div>
+
+
+  <button class="btn btn-primary ml-auto mt-2" (click)="start()"> Generate</button>
+</div>
+
+<div class="d-flex mb-3 pt-3">
+  <app-table-grid class="generator-table" [numRows]="numRows" [cells]="cells">
+
+  </app-table-grid>
+</div>
+
+<div class="text-center">
+  <h5> YOUR CODE: {{result ? result[0] +''+ result[1]:'00'}}</h5>
+</div>

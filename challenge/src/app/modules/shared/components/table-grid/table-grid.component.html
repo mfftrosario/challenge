@@ -1,0 +1,11 @@
+<table class="table-grid ml-auto mr-auto">
+  <tr>
+    <th></th>
+    <th class="cell text-center header" *ngFor="let item of numRows; let i=index">{{i}}</th>
+  </tr>
+  <tr *ngFor="let cell of cells; let irow=index">
+    <td class="cell text-center header">{{irow}}</td>
+    <td class="cell text-center" *ngFor="let item of cell; let icolumn=index">
+      {{item}}</td>
+  </tr>
+</table>

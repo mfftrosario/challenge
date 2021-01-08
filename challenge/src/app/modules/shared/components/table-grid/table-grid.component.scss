@@ -1,0 +1,21 @@
+$cell-width:3.75rem;
+
+$cell-height: $cell-width;
+
+
+.table-grid{
+  width: 100%;
+
+.cell{
+  border: 1px solid black;
+  height: $cell-height;
+  width: $cell-width;
+  min-height: $cell-height/2;
+  min-width: $cell-width/2;
+
+}
+
+.header{
+  font-weight: bolder;
+}
+}
