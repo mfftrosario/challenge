@@ -10,12 +10,13 @@ import { ChallengeFacadeService } from '../../services/challhenge.service';
 export class GeneratorComponent implements OnInit {
 
 
-  form = new FormGroup({
-    search: new FormControl(this.challengefacade.generatorService.search)
-  });
+  form;
 
 
   constructor (private challengefacade: ChallengeFacadeService) {
+    this.form = new FormGroup({
+      search: new FormControl(this.challengefacade.generatorService.search)
+    });
 
     this.form.controls.search.valueChanges.subscribe(w => {
       if (this.challengefacade.generatorService.search !== w) {
