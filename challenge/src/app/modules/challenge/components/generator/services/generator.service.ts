@@ -50,9 +50,8 @@ export class GeneratorService {
       count20 = 1;
     }
 
-    let i = 0;
-    const auxTable = [];
-    for (i; i < NUMROWS; i++) {
+    let auxTable = [];
+    for (let i = 0; i < NUMROWS; i++) {
       let irow = 0;
       let row: string[] = [];
       for (irow; irow < NUMROWS; irow++) {
@@ -62,8 +61,6 @@ export class GeneratorService {
       }
       auxTable.push(row);
     }
-
-    auxTable;
 
     const myArr = auxTable;
     const oneDimArr = myArr.reduce((a, b) => [...a, ...b], []);
@@ -82,11 +79,11 @@ export class GeneratorService {
 
     const seconds = this.time.getSeconds().toString();
 
-    let i0 = seconds[1] ? seconds[0] : 0;
-    let i1 = seconds[1] ? seconds[1] : seconds[0];
+    let ix = seconds[1] ? parseInt(seconds[0]) : 0;
+    let iy = seconds[1] ? parseInt(seconds[1]) : parseInt(seconds[0]);
 
 
-    const letters = [this.cells[i1][i0], this.cells[i0][i1]];
+    const letters = [this.cells[iy][ix], this.cells[ix][iy]];
     this.result = [0, 0];
 
 
@@ -98,13 +95,15 @@ export class GeneratorService {
       auxresult[1] += w.filter(w => w === letters[1]).length;
     })
 
-    for (let i = 0; i < auxresult.length; i++) {
-      if (auxresult[i] > 9) {
-        this.result[i] = this.makeOdd(auxresult[i])
+    for (let ir = 0; ir < auxresult.length; ir++) {
+      if (auxresult[ir] > 9) {
+        this.result[ir] = this.makeOdd(auxresult[ir])
       } else {
-        this.result[i] = auxresult[i]
+        this.result[ir] = auxresult[ir]
       }
     }
+
+    this.result = auxresult;
   }
 
   makeOdd(n) {
