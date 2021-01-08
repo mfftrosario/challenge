@@ -83,10 +83,8 @@ export class GeneratorService {
     let iy = seconds[1] ? parseInt(seconds[1]) : parseInt(seconds[0]);
 
 
-    const letters = [this.cells[iy][ix], this.cells[ix][iy]];
+    const letters = [this.cells[ix][iy], this.cells[iy][ix]];
     this.result = [0, 0];
-
-
 
     let auxresult = [0, 0]
 
